@@ -1,0 +1,51 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: 3e8a8703264a2f4a69428a0aa4dcb512790b2c8c  # frozen: v6.0.0
+    hooks:
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+      - id: pretty-format-json
+        args: [--autofix, --no-sort-keys]
+      - id: check-json
+      - id: check-yaml
+      - id: trailing-whitespace
+
+  - repo: https://github.com/renovatebot/pre-commit-hooks
+    rev: ea61453f651ced50674dc18885db999c73e809e8  # frozen: 43.272.9
+    hooks:
+      - id: renovate-config-validator
+        args: [--strict]
+        files: \.(json|json5)$
+
+  - repo: https://github.com/executablebooks/mdformat
+    rev: 82912cdaea4fb830f751504486a7879c70526547  # frozen: 1.0.0
+    hooks:
+      - id: mdformat
+
+  - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
+    rev: 4380fbb73a154b5f5624794c1c78d9719ccc860f  # frozen: v2.16.0
+    hooks:
+      - id: pretty-format-yaml
+        args: [--autofix, --offset, '2']
+
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 6b63472e72e1a91ed8a2f6d483790dfb644fa1d3  # frozen: 0.37.4
+    hooks:
+      - id: check-dependabot
+      - id: check-github-workflows
+
+  - repo: https://github.com/crate-ci/typos
+    rev: bee27e3a4fd1ea2111cf90ab89cd076c870fce14  # frozen: v1.48.0
+    hooks:
+      - id: typos
+
+  - repo: https://github.com/zizmorcore/zizmor-pre-commit
+    rev: 64a97fb7fa63188393d3215c6e312f5f9c6d0f78  # frozen: v1.27.0
+    hooks:
+      - id: zizmor
+        args: [--persona=auditor, --fix=safe]
+
+  - repo: meta
+    hooks:
+      - id: check-hooks-apply
+      - id: check-useless-excludes
