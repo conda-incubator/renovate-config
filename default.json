@@ -1,0 +1,52 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    "helpers:pinGitHubActionDigestsToSemver",
+    "customManagers:githubActionsVersions",
+    "customManagers:dockerfileVersions",
+    "customManagers:makefileVersions"
+  ],
+  "description": [
+    "Sane Renovate defaults for Python and conda projects from [conda-incubator/renovate-config](https://github.com/conda-incubator/renovate-config)",
+    "Use Renovate's recommended Dependency Dashboard, grouping, replacement, and workaround presets",
+    "Update common Python and conda dependency files, including Pixi and pre-commit",
+    "Pin GitHub Actions to immutable digests while retaining semantic version information",
+    "Update annotated version variables in GitHub Actions workflows, Dockerfiles, and Makefiles",
+    "Update annotated conda and PyPI dependencies in conda environment files",
+    "Include dependency metadata in pull request bodies"
+  ],
+  "pre-commit": {
+    "enabled": true
+  },
+  "prBodyNotes": [
+    "<details><summary>Renovate update details</summary>\n\n| Field       | Value             | \n|-------------|-------------------|\n| manager     | {{ manager }}     |\n| categories  | {{ categories }}  | \n| datasource  | {{ datasource }}  |\n| depName     | {{ depName }}     | \n| depType\u00b9    | {{ depType }}     | \n| packageName | {{ packageName }} |\n| sourceUrl   | {{ sourceUrl }}   |\n| updateType  | {{ updateType }}  | \n| versioning  | {{ versioning }}  |\n\n\u00b9 only available for some managers\n\n</details>"
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Upgrade conda dependencies",
+      "managerFilePatterns": [
+        "/(^|/)(environment|development|runtime)(?:[^/]*?).ya?ml$/"
+      ],
+      "matchStrings": [
+        "#\\s*renovate\\s+datasource=conda\\s+depName=(?<depName>.*?)\\s+-\\s*[\\w.-]+\\s*==?\\s*\"?(?<currentValue>.*)\"?",
+        "# renovate: datasource=conda depName=(?<depName>.*?)\\s+-\\s*[\\w.-]+\\s*==?\\s*\"?(?<currentValue>.*)\"?"
+      ],
+      "datasourceTemplate": "conda"
+    },
+    {
+      "customType": "regex",
+      "description": "Upgrade pypi dependencies inside conda environment files",
+      "managerFilePatterns": [
+        "/(^|/)(environment|development|runtime)(?:[^/]*?).ya?ml$/"
+      ],
+      "matchStrings": [
+        "# renovate datasource=pypi\\s+-\\s*(?<depName>[\\w-]+)\\s*(\\[[\\w,\\s]+\\])?\\s*==?\\s*(?<currentValue>.*)",
+        "# renovate: datasource=pypi\\s+-\\s*(?<depName>[\\w-]+)\\s*(\\[[\\w,\\s]+\\])?\\s*==?\\s*(?<currentValue>.*)",
+        "# renovate: datasource=pypi\\s+registryUrl=(?<registryUrl>.*?)\\s+-\\s*(?<depName>[\\w-]+)\\s*(\\[[\\w,\\s]+\\])?\\s*==?\\s*(?<currentValue>.*)"
+      ],
+      "datasourceTemplate": "pypi"
+    }
+  ]
+}
