@@ -11,7 +11,7 @@ repos:
       - id: trailing-whitespace
 
   - repo: https://github.com/renovatebot/pre-commit-hooks
-    rev: ea61453f651ced50674dc18885db999c73e809e8  # frozen: 43.272.9
+    rev: 469e561fc370cb5a24464739b95242e2826a1aac  # frozen: 44.3.0
     hooks:
       - id: renovate-config-validator
         args: [--strict]
@@ -35,12 +35,12 @@ repos:
       - id: check-github-workflows
 
   - repo: https://github.com/crate-ci/typos
-    rev: bee27e3a4fd1ea2111cf90ab89cd076c870fce14  # frozen: v1.48.0
+    rev: b859c0df7f391deba73030f79b957e62b4d81dc6  # frozen: varcon-core-v5.0.7
     hooks:
       - id: typos
 
   - repo: https://github.com/zizmorcore/zizmor-pre-commit
-    rev: 64a97fb7fa63188393d3215c6e312f5f9c6d0f78  # frozen: v1.27.0
+    rev: 067260dc5fe6ea86b7551bfd6f8b3ba4e6c93129  # frozen: v1.28.0
     hooks:
       - id: zizmor
         args: [--persona=auditor, --fix=safe]
