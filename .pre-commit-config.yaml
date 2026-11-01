@@ -11,7 +11,7 @@ repos:
       - id: trailing-whitespace
 
   - repo: https://github.com/renovatebot/pre-commit-hooks
-    rev: 675b43abb31bc8e492e2c113d6b681353e155825  # frozen: 44.44.0
+    rev: be4002a131a8fa52ef314b785adb353b29643508  # frozen: 44.181.6
     hooks:
       - id: renovate-config-validator
         args: [--strict]
@@ -29,18 +29,18 @@ repos:
         args: [--autofix, --offset, '2']
 
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 12e63946db2c5cfcc9030fac21c3883ba88c6ed8  # frozen: 0.38.0
+    rev: 0494aa7fa1314e98913a41227d8f0a515b2c1049  # frozen: 0.38.2
     hooks:
       - id: check-dependabot
       - id: check-github-workflows
 
   - repo: https://github.com/crate-ci/typos
-    rev: 8a48f81b6c64dcfea44b3633223084c4be58ac5f  # frozen: v1.49.0
+    rev: 7f9d0819ca1c008ade73f4b41fa9d258d48f605b  # frozen: v1.51.1
     hooks:
       - id: typos
 
   - repo: https://github.com/zizmorcore/zizmor-pre-commit
-    rev: 451b56af716f9f0d0c2b816503a3fd0cf8b036fa  # frozen: v1.29.0
+    rev: c92afdf2c6ca336aaa8f39e2bd8d48f62dbd8e1f  # frozen: v1.31.1
     hooks:
       - id: zizmor
         args: [--persona=auditor, --fix=safe]
